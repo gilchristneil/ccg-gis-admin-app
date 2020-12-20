@@ -23,12 +23,12 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   tabIcon: {
     flexGrow: 1,
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+    verticalAlign: 'center'
   },
   tabContainer: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-around'
   },
   tabTextOpen: {
@@ -56,7 +56,7 @@ export default function SideBarItems({ items, open }) {
         aria-label="Side Bar Menu Options"
       >
         {items.map((item, i) => {
-          return < Tab key={item.id} label={<Box display='flex' className={clsx(classes.tabContainer)}>
+          return < Tab key={item.id} label={<Box className={clsx(classes.tabContainer)}>
             <Box flexGrow={1} className={clsx(classes.tabIcon)} ><StorageIcon /></Box>
             <Box className={clsx(open ? classes.tabTextOpen : classes.tabTextClosed)}>{item.name} </Box>
           </Box>} />
