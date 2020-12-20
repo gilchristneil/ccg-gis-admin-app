@@ -40,10 +40,9 @@ const useStyles = makeStyles((theme) => ({
 export default function SideBarItems({ items, open }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue, item) => {
+  const handleChange = (event, newValue) => {
     console.log(event);
     console.log(newValue);
-    console.log(item)
     setValue(newValue);
   };
   return (
@@ -51,11 +50,11 @@ export default function SideBarItems({ items, open }) {
       <Tabs
         orientation="vertical"
         value={value}
-        onChange={handleChange(item)}
+        onChange={handleChange}
         aria-label="Side Bar Menu Options"
       >
         {items.map((item) => {
-          return < Tab key={item.id} label={<Box className={clsx(classes.tabContainer)}>
+          return < Tab key={item.id} value={item} label={<Box className={clsx(classes.tabContainer)}>
             <Box flexGrow={1} className={clsx(classes.tabIcon)} ><StorageIcon /></Box>
             <Box className={clsx(open ? classes.tabTextOpen : classes.tabTextClosed)}>
               {item.name}
