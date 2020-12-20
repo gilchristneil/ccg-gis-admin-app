@@ -10,10 +10,6 @@ import StorageIcon from '@material-ui/icons/Storage';
 import { FullscreenExit, WrapText } from '@material-ui/icons';
 
 
-function dyanmicIcon(iconName) {
-  return (<Icon>iconName</Icon>)
-}
-
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -44,7 +40,10 @@ const useStyles = makeStyles((theme) => ({
 export default function SideBarItems({ items, open }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
+  const handleChange = (event, newValue, item) => {
+    console.log(event);
+    console.log(newValue);
+    console.log(item)
     setValue(newValue);
   };
   return (
@@ -52,13 +51,15 @@ export default function SideBarItems({ items, open }) {
       <Tabs
         orientation="vertical"
         value={value}
-        onChange={handleChange}
+        onChange={handleChange(item)}
         aria-label="Side Bar Menu Options"
       >
-        {items.map((item, i) => {
+        {items.map((item) => {
           return < Tab key={item.id} label={<Box className={clsx(classes.tabContainer)}>
             <Box flexGrow={1} className={clsx(classes.tabIcon)} ><StorageIcon /></Box>
-            <Box className={clsx(open ? classes.tabTextOpen : classes.tabTextClosed)}>{item.name} </Box>
+            <Box className={clsx(open ? classes.tabTextOpen : classes.tabTextClosed)}>
+              {item.name}
+            </Box>
           </Box>} />
         })}
 

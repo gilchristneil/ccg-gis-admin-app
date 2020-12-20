@@ -1,8 +1,13 @@
 import React from 'react';
-import NavBar from '../components/navigation/NavBar';
+import Dashboard from './layerauth/dashboard';
+import Layout from '../components/layouts/SiteLayout'
 
-export default function Home() {
+export default function App() {
   return (
-    <NavBar />
+    <div>
+      <Layout>
+        <Dashboard />
+      </Layout>
+    </div>
   )
 }

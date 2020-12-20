@@ -8,9 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideBarItems from './SideBarItems';
@@ -19,58 +17,45 @@ import Tab from '@material-ui/core/Tab';
 import ProfileButton from './ProfileButton';
 
 
+
 const SideBarItemsStatic = [
   {
     "id": "layerAuth_Dasboard",
     "name": "Dashboard",
     "icon": "Dashboard",
     "aria-label": "A wide picture of information of the dashboard",
-    "url": ""
+    "url": "/layerauth/home"
   },
   {
     "id": "layerAuth_Request",
     "name": "Layer Request Authourization Form",
     "icon": "ShoppingCart",
     "aria-label": "Form to fill to request access to a layer",
-    "url": ""
+    "url": "/layerauth/layerauthrequest"
   },
   {
     "id": "layerAuth_History",
     "name": "Historic Requests",
     "icon": "BarChart",
     "aria-label": "View past layer authourization requests",
-    "url": ""
+    "url": "/layerauth/history"
   },
   {
     "id": "layerAuth_Admin",
     "name": "Admin Section",
     "icon": "Layers",
     "aria-label": "Section to allow admins to change access",
-    "url": ""
+    "url": "/layerauth/admin"
   },
 ]
 
-function Copyright() {
-  return (
-    <Typography className="copyright" variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-  },
-  copyright: {
-    bottom: 0,
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -117,24 +102,11 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(9),
     },
   },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '100vh',
-    overflow: 'auto',
-  },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-  },
-  fixedHeight: {
-    height: 240,
   },
   profileButton: {
 
@@ -143,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [headValue, setHeadValue] = React.useState(2);
   const handleHeaderTabChange = (event, newValue) => {
     setHeadValue(newValue);
@@ -151,10 +123,6 @@ export default function Dashboard() {
   const handleDrawer = () => {
     setOpen(!open);
   };
-  const handleProfileMenu = () => {
-    return
-  }
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <div className={classes.root}>
       <AppBar position="absolute" className={clsx(classes.appBar)}>
@@ -185,7 +153,6 @@ export default function Dashboard() {
             </Tabs>
           </Box>
           <ProfileButton />
-
         </Toolbar>
       </AppBar>
       <Drawer
@@ -198,34 +165,6 @@ export default function Dashboard() {
         <Divider />
         <SideBarItems items={SideBarItemsStatic} open={open} />
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-
-              </Paper>
-            </Grid>
-          </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container>
-      </main>
     </div>
   );
 }
