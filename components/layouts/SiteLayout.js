@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     justifyContent: "center"
-  }
+  },
+  appBarSpacer: theme.mixins.toolbar,
 }))
 
 export default function Layout({ children }) {
@@ -20,8 +21,12 @@ export default function Layout({ children }) {
   return (
     <div className={classes.root}>
       <NavBar />
-      <div className={classes.content}>{children}</div>
-      <Copyright />
+      <div className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        {children}
+        <Copyright />
+      </div>
+
     </div>
   )
 }

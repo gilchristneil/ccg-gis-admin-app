@@ -6,7 +6,6 @@ import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   copyright: {
-    display: 'flex',
     bottom: 0,
   },
 

@@ -5,9 +5,7 @@ import Layout from '../components/layouts/SiteLayout'
 export default function App() {
   return (
     <div>
-      <Layout>
-        <Dashboard />
-      </Layout>
+      <Dashboard />
     </div>
   )
 }

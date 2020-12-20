@@ -24,7 +24,7 @@ const SideBarItemsStatic = [
     "name": "Dashboard",
     "icon": "Dashboard",
     "aria-label": "A wide picture of information of the dashboard",
-    "url": "/layerauth/home"
+    "url": "/layerauth/dashboard"
   },
   {
     "id": "layerAuth_Request",
