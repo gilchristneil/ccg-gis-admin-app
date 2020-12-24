@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: 'hidden',
     position: 'relative',
     height: '100vh',
+    flexShrink: 0,
     whiteSpace: 'nowrap',
     width: drawerWidth,
     transition: theme.transitions.create('width', {

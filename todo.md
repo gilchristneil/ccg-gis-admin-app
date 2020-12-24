@@ -8,7 +8,6 @@
 SIDE BAR
 -perisitng selection
 -icons
--cleaner transition
 
 ROUTING:
 -Look into shallow loading? maybe help with the navigation
