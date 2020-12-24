@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -8,13 +8,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideBarItems from './SideBarItems';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ProfileButton from './ProfileButton';
+import { useCookies } from 'react-cookie';
 
 
 
@@ -48,7 +47,6 @@ const SideBarItemsStatic = [
     "url": "/layerauth/admin"
   },
 ]
-
 
 
 const drawerWidth = 240;
@@ -116,14 +114,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [cookies, setCookies] = useCookies(['openState'])
+  console.log(cookies['openState'])
+  const [open, setOpen] = React.useState((cookies['openState'] === "true" ? true : false));
+
   const [headValue, setHeadValue] = React.useState(2);
   const handleHeaderTabChange = (event, newValue) => {
     setHeadValue(newValue);
   };
   const handleDrawer = () => {
-    setOpen(!open);
+    setCookies('openState', !open)
+    setOpen(!open)
   };
+
   return (
     <div className={classes.root}>
       <AppBar position="absolute" className={clsx(classes.appBar)}>
@@ -164,7 +167,7 @@ export default function Dashboard() {
         open={open}
       >
         <Divider />
-        <SideBarItems items={SideBarItemsStatic} open={open} />
+        <SideBarItems items={SideBarItemsStatic} />
       </Drawer>
     </div>
   );

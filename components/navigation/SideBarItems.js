@@ -25,17 +25,16 @@ const saveListIndex = () => {
 }
 
 //items include name / icon / url passage 
-export default function SideBarItems({ items, open }) {
+export default function SideBarItems({ items }) {
   const classes = useStyles();
+  const [listIndex, setListIndex] = React.useState(items[0])
   const tabIndex = getListIndex();
   return (
     <List className={classes.root}>
       {items.map((item) => {
-        return <Link href={item.url}><ListItem button key={item.id}>
-
+        return <Link href={item.url}><ListItem button key={item.name}>
           <ListItemIcon ><StorageIcon /></ListItemIcon>
           <ListItemText primary={item.name} className={classes.listText} />
-
         </ListItem>
         </Link>
       })}

@@ -6,8 +6,8 @@
 
 
 SIDE BAR
--perisitng selection
--icons
+-perisitng selection cookies - how work? who knows
+-icons, dynamic?
 
 ROUTING:
 -Look into shallow loading? maybe help with the navigation
